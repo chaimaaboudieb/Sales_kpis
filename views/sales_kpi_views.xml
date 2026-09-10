@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Liste des KPI -->
+    <record id="view_sales_kpi_list" model="ir.ui.view">
+        <field name="name">sales.kpi.list</field>
+        <field name="model">sales.kpi</field>
+        <field name="arch" type="xml">
+            <list string="KPI Mensuels">
+
+                <field name="commercial_id"/>
+                <field name="month"/>
+                <field name="year"/>
+
+                <field name="prospects_contacted"/>
+                <field name="meetings_obtained"/>
+                <field name="quotations_sent"/>
+                <field name="sales_realized"/>
+                <field name="revenue"/>
+
+                <field name="transformation_rate"/>
+                <field name="prospect_to_meeting_rate"/>
+                <field name="average_sale_value"/>
+
+            </list>
+        </field>
+    </record>
+
+
+    <!-- Formulaire KPI -->
+    <record id="view_sales_kpi_form" model="ir.ui.view">
+        <field name="name">sales.kpi.form</field>
+        <field name="model">sales.kpi</field>
+        <field name="arch" type="xml">
+
+            <form string="KPI Mensuel">
+
+                <sheet>
+
+                    <group string="Période">
+                        <field name="commercial_id"/>
+                        <field name="month"/>
+                        <field name="year"/>
+                    </group>
+
+                    <group string="Activité commerciale">
+                        <field name="prospects_contacted"/>
+                        <field name="meetings_obtained"/>
+                        <field name="quotations_sent"/>
+                        <field name="sales_realized"/>
+                        <field name="revenue"/>
+                    </group>
+
+                    <group string="Indicateurs calculés">
+                        <field name="transformation_rate"/>
+                        <field name="prospect_to_meeting_rate"/>
+                        <field name="average_sale_value"/>
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- Recherche KPI -->
+    <record id="view_sales_kpi_search" model="ir.ui.view">
+        <field name="name">sales.kpi.search</field>
+        <field name="model">sales.kpi</field>
+        <field name="arch" type="xml">
+
+            <search string="Rechercher un KPI">
+
+                <field name="commercial_id"/>
+                <field name="month"/>
+                <field name="year"/>
+
+                <separator/>
+
+                <filter
+                    name="current_year"
+                    string="Année actuelle"
+                    domain="[('year', '=', context_today().year)]"
+                />
+
+                <group string="Grouper par">
+
+                    <filter
+                        name="group_commercial"
+                        string="Commercial"
+                        context="{'group_by': 'commercial_id'}"
+                    />
+
+                    <filter
+                        name="group_year"
+                        string="Année"
+                        context="{'group_by': 'year'}"
+                    />
+
+                    <filter
+                        name="group_month"
+                        string="Mois"
+                        context="{'group_by': 'month'}"
+                    />
+
+                </group>
+
+            </search>
+
+        </field>
+    </record>
+
+
+    <!-- Action KPI -->
+    <record id="action_sales_kpi" model="ir.actions.act_window">
+        <field name="name">KPI Mensuels</field>
+        <field name="res_model">sales.kpi</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_sales_kpi_search"/>
+    </record>
+
+</odoo>

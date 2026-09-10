@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "C:\\Program Files\\Odoo 18.0.20260908\\server"
+    ]
+}

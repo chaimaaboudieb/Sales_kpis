@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Menu principal -->
+    <menuitem
+        id="menu_sales_kpi_root"
+        name="Sales KPI"
+        sequence="10"
+    />
+
+    <!-- Menu Commerciaux -->
+    <menuitem
+        id="menu_sales_commercial"
+        name="Commerciaux"
+        parent="menu_sales_kpi_root"
+        action="action_sales_commercial"
+        sequence="10"
+    />
+
+    <!-- Menu KPI -->
+    <menuitem
+        id="menu_sales_kpi"
+        name="KPI Mensuels"
+        parent="menu_sales_kpi_root"
+        action="action_sales_kpi"
+        sequence="20"
+    />
+
+</odoo>
